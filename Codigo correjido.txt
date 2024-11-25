@@ -1,0 +1,277 @@
+using System;
+using MySql.Data.MySqlClient;
+
+namespace Consola
+{
+    class Programa
+    {
+        // Cadena de conexión a la base de datos
+        static string connectionString = "server=localhost; database=biblioteca; user=root";
+
+        // Función para crear un usuario
+        static void crear_usuario()
+        {
+            string nombre, apellido, dni, telefono, email;
+            Console.WriteLine("Ingrese nombre: ");
+            nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese apellido: ");
+            apellido = Console.ReadLine();
+            Console.WriteLine("Ingrese dni: ");
+            dni = Console.ReadLine();
+            Console.WriteLine("Ingrese telefono: ");
+            telefono = Console.ReadLine();
+            Console.WriteLine("Ingrese email: ");
+            email = Console.ReadLine();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.WriteLine("Conexion exitosa");
+                    string query = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email) " +
+                                   "VALUES (@nombre, @apellido, @dni, @telefono, @email)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@nombre", nombre);
+                        command.Parameters.AddWithValue("@apellido", apellido);
+                        command.Parameters.AddWithValue("@dni", dni);
+                        command.Parameters.AddWithValue("@telefono", telefono);
+                        command.Parameters.AddWithValue("@email", email);
+
+                        int resultado = command.ExecuteNonQuery();
+                        if (resultado > 0)
+                        {
+                            Console.WriteLine("\t\t\tRegistro agregado correctamente!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\t\t\tError al iniciar el registro!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        // Función para actualizar los datos de un usuario
+        static void actualizar_usuario()
+        {
+            int opciones;
+            int dniUsuario;
+            string nombre = "", apellido = "", telefono = "", email = "";
+
+            Console.WriteLine("Ingrese el dni del usuario:");
+            dniUsuario = Convert.ToInt32(Console.ReadLine());
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.WriteLine("Conexion exitosa");
+                    opciones = -1;
+
+                    while (opciones != 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Elija una opción para el dato que quiere actualizar:");
+                        Console.WriteLine("1) Actualizar el nombre del usuario");
+                        Console.WriteLine("2) Actualizar el apellido del usuario");
+                        Console.WriteLine("3) Actualizar el teléfono del usuario");
+                        Console.WriteLine("4) Actualizar el email del usuario");
+                        Console.WriteLine("5) Salir");
+                        opciones = Convert.ToInt32(Console.ReadLine());
+
+                        switch (opciones)
+                        {
+                            case 1:
+                                Console.WriteLine("Ingrese el nuevo nombre:");
+                                nombre = Console.ReadLine();
+                                string query1 = "UPDATE usuarios SET nombre = @nuevoNombre WHERE dni = @dniUsuario";
+                                using (MySqlCommand command = new MySqlCommand(query1, conn))
+                                {
+                                    command.Parameters.AddWithValue("@nuevoNombre", nombre);
+                                    command.Parameters.AddWithValue("@dniUsuario", dniUsuario);
+                                    int estado = command.ExecuteNonQuery();
+                                    if (estado > 0)
+                                    {
+                                        Console.WriteLine("\t\t\tUsuario actualizado correctamente!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\t\t\tError al actualizar el usuario!");
+                                    }
+                                }
+                                break;
+
+                            case 2:
+                                Console.WriteLine("Ingrese el nuevo apellido:");
+                                apellido = Console.ReadLine();
+                                string query2 = "UPDATE usuarios SET apellido = @nuevoApellido WHERE dni = @dniUsuario";
+                                using (MySqlCommand command = new MySqlCommand(query2, conn))
+                                {
+                                    command.Parameters.AddWithValue("@nuevoApellido", apellido);
+                                    command.Parameters.AddWithValue("@dniUsuario", dniUsuario);
+                                    int estado = command.ExecuteNonQuery();
+                                    if (estado > 0)
+                                    {
+                                        Console.WriteLine("\t\t\tUsuario actualizado correctamente!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\t\t\tError al actualizar el usuario!");
+                                    }
+                                }
+                                break;
+
+                            case 3:
+                                Console.WriteLine("Ingrese el nuevo teléfono:");
+                                telefono = Console.ReadLine();
+                                string query3 = "UPDATE usuarios SET telefono = @nuevoTelefono WHERE dni = @dniUsuario";
+                                using (MySqlCommand command = new MySqlCommand(query3, conn))
+                                {
+                                    command.Parameters.AddWithValue("@nuevoTelefono", telefono);
+                                    command.Parameters.AddWithValue("@dniUsuario", dniUsuario);
+                                    int estado = command.ExecuteNonQuery();
+                                    if (estado > 0)
+                                    {
+                                        Console.WriteLine("\t\t\tUsuario actualizado correctamente!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\t\t\tError al actualizar el usuario!");
+                                    }
+                                }
+                                break;
+
+                            case 4:
+                                Console.WriteLine("Ingrese el nuevo email:");
+                                email = Console.ReadLine();
+                                string query4 = "UPDATE usuarios SET email = @nuevoEmail WHERE dni = @dniUsuario";
+                                using (MySqlCommand command = new MySqlCommand(query4, conn))
+                                {
+                                    command.Parameters.AddWithValue("@nuevoEmail", email);
+                                    command.Parameters.AddWithValue("@dniUsuario", dniUsuario);
+                                    int estado = command.ExecuteNonQuery();
+                                    if (estado > 0)
+                                    {
+                                        Console.WriteLine("\t\t\tUsuario actualizado correctamente!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\t\t\tError al actualizar el usuario!");
+                                    }
+                                }
+                                break;
+
+                            case 5:
+                                opciones = 0;  // Salir del ciclo
+                                break;
+
+                            default:
+                                Console.WriteLine("Opción no válida.");
+                                break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        // Función para borrar un usuario
+        static void borrar_usuario()
+        {
+            string dniUsuario;
+            Console.WriteLine("Ingrese el dni del usuario a borrar:");
+            dniUsuario = Console.ReadLine();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.WriteLine("Conexion exitosa");
+                    string query = "UPDATE usuarios SET estado = 0 WHERE dni = @dniUsuario"; // Suponiendo que 'estado' es una columna para marcar como borrado
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@dniUsuario", dniUsuario);
+                        int estado = command.ExecuteNonQuery();
+                        if (estado > 0)
+                        {
+                            Console.WriteLine("\t\t\tUsuario borrado correctamente!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\t\t\tError al borrar el usuario!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        // Funciones adicionales sin implementación
+        static void agregar_libro() { }
+        static void actualizar_libro() { }
+        static void borrar_libro() { }
+        static void agregar_genero() { }
+        static void actualizar_genero() { }
+        static void crear_prestamo() { }
+        static void actualizar_prestamo() { }
+
+        // Menú principal
+        static void Main(string[] args)
+        {
+            int opciones = -1;
+
+            while (opciones != 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Bienvenido al menú principal: ");
+                Console.WriteLine("1) Crear un usuario nuevo");
+                Console.WriteLine("2) Actualizar un usuario");
+                Console.WriteLine("3) Borrar usuario");
+                Console.WriteLine("4) Agregar libro");
+                Console.WriteLine("5) Actualizar libro");
+                Console.WriteLine("6) Borrar libro");
+                Console.WriteLine("7) Agregar genero");
+                Console.WriteLine("8) Actualizar genero");
+                Console.WriteLine("9) Crear prestamo");
+                Console.WriteLine("10) Actualizar prestamo");
+                Console.WriteLine("11) Salir .. ");
+                
+                // Captura de la opción seleccionada por el usuario
+                opciones = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+
+                switch (opciones)
+                {
+                    case 1: crear_usuario(); break;
+                    case 2: actualizar_usuario(); break;
+                    case 3: borrar_usuario(); break;
+                    case 4: agregar_libro(); break;
+                    case 5: actualizar_libro(); break;
+                    case 6: borrar_libro(); break;
+                    case 7: agregar_genero(); break;
+                    case 8: actualizar_genero(); break;
+                    case 9: crear_prestamo(); break;
+                    case 10: actualizar_prestamo(); break;
+                    case 11: Environment.Exit(0); break;
+                    default: Console.WriteLine("Opción no válida."); break;
+                }
+            }
+        }
+    }
+}

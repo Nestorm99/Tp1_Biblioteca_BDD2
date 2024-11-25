@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Nestor\\Desktop\\Facultad\\UTN\\Programacion\\base de datps\\ConsoleApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6F18B85C-3A15-4C69-8B75-D903D8EFF54F}|ConsoleApp1.csproj|c:\\users\\nestor\\desktop\\facultad\\utn\\programacion\\base de datps\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F18B85C-3A15-4C69-8B75-D903D8EFF54F}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Nestor\\AppData\\Local\\Temp\\.vsdbgsrc\\b7ace9f0d0b549f8b9deca254a4d651f494eb513a7b51a9adf6732a9f3e96d3a\\Programa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Programa.cs",
+              "DocumentMoniker": "C:\\Users\\Nestor\\AppData\\Local\\Temp\\.vsdbgsrc\\b7ace9f0d0b549f8b9deca254a4d651f494eb513a7b51a9adf6732a9f3e96d3a\\Programa.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b7ace9f0d0b549f8b9deca254a4d651f494eb513a7b51a9adf6732a9f3e96d3a\\Programa.cs",
+              "ToolTip": "C:\\Users\\Nestor\\AppData\\Local\\Temp\\.vsdbgsrc\\b7ace9f0d0b549f8b9deca254a4d651f494eb513a7b51a9adf6732a9f3e96d3a\\Programa.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b7ace9f0d0b549f8b9deca254a4d651f494eb513a7b51a9adf6732a9f3e96d3a\\Programa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAsAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T03:06:10.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Nestor\\Desktop\\Facultad\\UTN\\Programacion\\base de datps\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Nestor\\Desktop\\Facultad\\UTN\\Programacion\\base de datps\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T23:06:07.066Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
